@@ -102,17 +102,6 @@ $ flask initdb
 $ flask run
 ```
 
-## Screenshots
-
-![Homepage](/screenshots/homepage.png)
-![SignUp](/screenshots/signup.png)
-![Login](/screenshots/login.png)
-![Dashboard](/screenshots/dashboard.png)
-![Tasks](/screenshots/tasks.png)
-![Profile](/screenshots/profile.png)
-![Admin](/screenshots/admin.png)
-
-
 ## Project Structure
 
 ```bash
@@ -185,20 +174,10 @@ This application uses the following modules
 
  - Flask
  - Flask-SQLAlchemy
- - Flask-WTF
  - Flask-Mail
  - Flask-Caching
  - Flask-Login
  - Flask-Admin
  - pytest
- - Bootstrap (bare minimum so that you can replace it with any frontend library)
+ - Bootstrap (sorry)
  - Jinja2
-
-
-## Testing
-
-Note: This web application has been tested thoroughly during multiple large projects, however tests for this bare minimum version would be added in `tests` folder very soon to help you get started.
-
-## Need Help? 🤝
-
-If you need further help, reach out to me via [Twitter](https://twitter.com/kundan7_) DM.
