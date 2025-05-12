@@ -16,7 +16,6 @@ class Users(db.Model, UserMixin):
     name = Column(db.String())
 
     email = Column(db.String(), unique=True)
-    email_activation_key = Column(db.String())
 
     created_time = Column(db.DateTime, default=datetime.today())
 

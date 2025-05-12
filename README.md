@@ -11,7 +11,6 @@ Flask-Starter is a boilerplate starter template designed to help you quickstart 
 - User profile/password updates
 - User roles (admin, user, staff)
 - User profile status (active, inactive)
-- Admin dashboard for management
 - Contact us form
 - Basic tasks/todo model (easily replace with your use-case)
 - Bootstrap template (minimal)
@@ -43,17 +42,6 @@ Check `emails/__init__.py` to see how emails being sent in `async` mode
  - To make back-end development quick to start, with robust foundations
  - To help you quickly learn how to build a Flask based web application
  - To help you quick start coding your web app's main logic and features
-
-
-## Table of Contents
-
-1. [Getting Started](#getting-started)
-1. [Screenshots](#screenshots)
-1. [Project Structure](#project-structure)
-1. [Modules](#modules)
-1. [Testing](#testing)
-1. [Need Help?](#need-help)
-
 
 ## Getting Started
 
@@ -174,10 +162,8 @@ This application uses the following modules
 
  - Flask
  - Flask-SQLAlchemy
- - Flask-Mail
  - Flask-Caching
  - Flask-Login
- - Flask-Admin
  - pytest
  - Bootstrap (sorry)
  - Jinja2
