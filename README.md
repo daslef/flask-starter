@@ -34,24 +34,17 @@ $ git clone https://github.com/daslef/flask-starter.git
 $ cd flask-starter
 ```
 
-activate uv enviroment
+create and activate uv enviroment
 
 ```bash
-$ python3 -m venv /path/to/your/virtual/environment
-$ source <path/to/venv>/bin/activate
+$ uv venv
+$ .venv/Scripts/activate
 ```
 
 install dependencies in virtualenv
 
 ```bash
-$ pip install -r requirements.txt
-```
-
-setup `flask` command for our app
-
-```bash
-$ export FLASK_APP=manage.py
-$ export FLASK_ENV=development
+$ uv sync
 ```
 
 initialize database and dummy data
@@ -64,6 +57,18 @@ start dev server
 
 ```bash
 $ uv run python manage.py runserver
+```
+
+format code
+
+```bash
+$ uv tool run ruff format
+```
+
+lint code
+
+```bash
+$ uv tool run ruff check
 ```
 
 ## Project Structure
