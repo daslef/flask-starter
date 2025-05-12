@@ -4,36 +4,15 @@ Flask-Starter is a boilerplate starter template designed to help you quickstart 
 
 ## Features
 
-- Flask 2.0, Python (`PEP8`)
-- Signup, Login with (email, password)
-- Forget/reset passwords
-- Email verification
-- User profile/password updates
+- Flask 3.1
+- Signup, Login via email-password
+- Templates (Layouts, Auth)
 - User roles (admin, user, staff)
 - User profile status (active, inactive)
-- Contact us form
-- Basic tasks/todo model (easily replace with your use-case)
+- Basic models (easily replace with your use-case)
 - Bootstrap template (minimal)
-- Utility scripts (initiate dummy database, run test server)
+- CLI scripts (initiate dummy database, run test server)
 - Test & Production Configs
-- Tests [To Do]
-
-
-## Flask 2.0 `async` or not `async`
-
- - asynchronous support in Flask 2.0 is an amazing feature
- - however, use it only when it has a clear advantage over the equivalent synchronous code
- - write asynchronous code, if your application's routes, etc. are making heavy I/O-bound operations, like:
-    - sending emails, making API calls to external servers, working with the file system, etc
- - otherwise, if your application is doing CPU-bound operations or long-running tasks, like:
-    - processing images or large files, creating backups or running AI/ML models, etc
-    - it is advised to use tools like "Celery" or "Huey", etc.
-
-
-## `async` demo in our application
-
-Check `emails/__init__.py` to see how emails being sent in `async` mode
-
 
 ## Primary Goals
 
@@ -45,14 +24,17 @@ Check `emails/__init__.py` to see how emails being sent in `async` mode
 
 ## Getting Started
 
+[install uv](https://docs.astral.sh/uv/getting-started/installation/
+)
+
 clone the project
 
 ```bash
-$ git clone https://github.com/ksh7/flask-starter.git
+$ git clone https://github.com/daslef/flask-starter.git
 $ cd flask-starter
 ```
 
-create virtual environment using python3 and activate it (keep it outside our project directory)
+activate uv enviroment
 
 ```bash
 $ python3 -m venv /path/to/your/virtual/environment
@@ -72,22 +54,16 @@ $ export FLASK_APP=manage.py
 $ export FLASK_ENV=development
 ```
 
-create instance folder in `/tmp` directory (sqlite database, temp files stay here)
+initialize database and dummy data
 
 ```bash
-$ mkdir /tmp/flaskstarter-instance
+$ uv run python manage.py initdb
 ```
 
-initialize database and get two default users (admin & demo), check `manage.py` for details
+start dev server
 
 ```bash
-$ flask initdb
-```
-
-5) start test server at `localhost:5000`
-
-```bash
-$ flask run
+$ uv run python manage.py runserver
 ```
 
 ## Project Structure
@@ -100,25 +76,26 @@ flask-starter/
 │   ├── decorators.py
 │   ├── extensions.py
 │   ├── __init__.py
-│   ├── settings
-│   │   ├── forms.py
+│   ├── albums
+│   │   ├── models.py
 │   │   ├── __init__.py
 │   │   └── views.py
 │   ├── static
 │   │   ├── bootstrap.bundle.min.js
 │   │   ├── bootstrap.min.css
 │   │   └── jquery.slim.min.js
-│   ├── tasks
-│   │   ├── forms.py
+│   ├── auth
+│   │   ├── constants.py
 │   │   ├── __init__.py
 │   │   ├── models.py
 │   │   └── views.py
 │   ├── templates
-│   │   ├── admin
-│   │   │   └── index.html
-│   │   ├── dashboard
-│   │   │   └── dashboard.html
-│   │   ├── frontend
+│   │   ├── albums
+│   │   │   └── add_album.html
+│   │   │   ├── all_albums.html
+│   │   │   ├── edit_album.html
+│   │   │   ├── view_album.html
+│   │   ├── auth
 │   │   │   ├── change_password.html
 │   │   │   ├── contact_us.html
 │   │   │   ├── landing.html
@@ -133,26 +110,17 @@ flask-starter/
 │   │   │   ├── _flash_msg.html
 │   │   │   ├── _form.html
 │   │   │   └── _reset_password.html
-│   │   ├── settings
-│   │   │   ├── password.html
-│   │   │   └── profile.html
-│   │   └── tasks
-│   │       ├── add_task.html
-│   │       ├── edit_task.html
-│   │       ├── my_tasks.html
-│   │       └── view_task.html
-│   ├── user
-│   │   ├── constants.py
-│   │   ├── __init__.py
-│   │   └── models.py
-│   └── utils.py
-├── manage.py
-├── README.md
-├── requirements.txt
-├── screenshots
+│   └── bootstrap.py
+│   └── config.py
+│   └── decorators.py
+│   └── plugins.py
 └── tests
     ├── __init__.py
     └── test_flaskstarter.py
+├── manage.py
+├── pyproject.toml
+├── README.md
+└── uv.lock
 ```
 
 
@@ -162,7 +130,7 @@ This application uses the following modules
 
  - Flask
  - Flask-SQLAlchemy
- - Flask-Caching
+ - Flask-Migrate
  - Flask-Login
  - pytest
  - Bootstrap (sorry)
